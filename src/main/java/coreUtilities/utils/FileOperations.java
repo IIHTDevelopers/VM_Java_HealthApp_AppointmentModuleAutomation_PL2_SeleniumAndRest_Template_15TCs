@@ -1,32 +1,14 @@
 package coreUtilities.utils;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import java.util.stream.Collectors;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
 import com.codoid.products.exception.FilloException;
 import com.codoid.products.fillo.Connection;
 import com.codoid.products.fillo.Fillo;
-import com.codoid.products.fillo.Recordset;
-
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import java.util.Iterator;
 
 public class FileOperations 
 {
@@ -46,57 +28,11 @@ public class FileOperations
      */
 	public Map<String, String> readExcelPOI(String excelFilePath, String sheetName) throws FilloException
 	{
-	    HashMap<String, String> dataMap = new HashMap<>();
-
-	    try (FileInputStream fis = new FileInputStream(excelFilePath);
-	         Workbook workbook = new XSSFWorkbook(fis)) {
-
-	        // Get the first sheet
-	        //Sheet sheet = workbook.getSheetAt(0);
-	        Sheet sheet = workbook.getSheet(sheetName);
-
-	        // Iterate through each row in the sheet
-	        Iterator<Row> rowIterator = sheet.iterator();
-	        while (rowIterator.hasNext()) {
-	            Row row = rowIterator.next();
-
-	            // Get the first and second cell from each row
-	            Cell keyCell = row.getCell(0);
-	            Cell valueCell = row.getCell(1);
-
-	            // Convert cells to string and put them in the HashMap
-	            String key = getCellValueAsString(keyCell);
-	            String value = getCellValueAsString(valueCell);
-
-	            dataMap.put(key, value);
-	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    }
-
-	    return dataMap;
+	    
+		//Write the code here
+	    return null;
 	}
-	private static String getCellValueAsString(Cell cell) {
-	    if (cell == null) {
-	        return "";
-	    }
+	
 
-	    switch (cell.getCellType()) {
-	        case STRING:
-	            return cell.getStringCellValue();
-	        case NUMERIC:
-	            if (DateUtil.isCellDateFormatted(cell)) {
-	                return cell.getDateCellValue().toString();
-	            } else {
-	                return String.valueOf((int)cell.getNumericCellValue());
-	            }
-	        case BOOLEAN:
-	            return String.valueOf(cell.getBooleanCellValue());
-	        case FORMULA:
-	            return cell.getCellFormula();
-	        default:
-	            return "";
-	    }
-	}
 	
 }
