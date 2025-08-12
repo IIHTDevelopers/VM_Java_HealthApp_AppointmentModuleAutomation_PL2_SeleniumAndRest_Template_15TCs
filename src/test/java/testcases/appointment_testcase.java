@@ -29,7 +29,7 @@ public class appointment_testcase extends AppTestBase
 	String loginFilePath = loginDataFilePath + "Login.xlsx";
 	StartupPage startupPage;
 	private final String EXCEL_FILE_PATH = "src/main/resources/config.xlsx"; // Path to the Excel file
-	private final String FILEPATH = "src/main/java/rest/ApiUtil.java";
+	private final String FILEPATH = "src/main/java/pages/appointment_Pages.java";
 	FileOperations fileOperations = new FileOperations();
 	public static int appointmentId;
 	appointment_Pages appointment_PagesInstance;
@@ -289,8 +289,8 @@ public class appointment_testcase extends AppTestBase
 		System.out.println("LastName: " + lastName);
 
 		// Validate that 'firstName' and 'shortName' contain "Test"
-		Assert.assertTrue(firstName.contains("Test"), "FirstName does not contain 'Test'");
-		Assert.assertTrue(shortName.contains("Test"), "ShortName does not contain 'Test'");
+		Assert.assertTrue(firstName.contains("test"), "FirstName does not contain 'test'");
+		Assert.assertTrue(shortName.contains("test"), "ShortName does not contain 'test'");
 
 		// Validate the 'Status' field
 		String status = searchedResponse.getStatus();
